@@ -26,17 +26,6 @@ class MainActivity : AppCompatActivity() {
         //뷰바인딩
         setContentView(binding.root)
 
-        //4
-        //사용자에게 승인 요청
-        //카메라 버튼을 클릭하면 승인요청의 런처를 실행하는 코드 작성
-        //4-1
-        //런처의 속성 launch()의 파라미터에는
-        //앞에서 작성한 설정파일(AndroidManifest.xml)에 명세했던 카메라 권한 1개만 넘겨주면 됨
-        binding.btnCamera.setOnClickListener {
-            activityResult.launch(android.Manifest.permission.CAMERA)
-        }
-
-
         //3-2
         //registerForActivityResult()를 런처로 만들어 미리선언한 전역변수 activityResult에 저장
         activityResult = registerForActivityResult(ActivityResultContracts.RequestPermission()){ isGranted ->
@@ -51,6 +40,16 @@ class MainActivity : AppCompatActivity() {
                 finish()
             }
 
+        }
+
+        //4
+        //사용자에게 승인 요청
+        //카메라 버튼을 클릭하면 승인요청의 런처를 실행하는 코드 작성
+        //4-1
+        //런처의 속성 launch()의 파라미터에는
+        //앞에서 작성한 설정파일(AndroidManifest.xml)에 명세했던 카메라 권한 1개만 넘겨주면 됨
+        binding.btnCamera.setOnClickListener {
+            activityResult.launch(android.Manifest.permission.CAMERA)
         }
 
         //FIN.
